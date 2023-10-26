@@ -6,20 +6,12 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Grid.RowSpan="2" Margin="-186,10,-69,-50">
-            <Grid.Background>
-                <ImageBrush ImageSource="/Image/TASS_40307732-scaled.jpg" />
-            </Grid.Background>
-        </Grid>
-        
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -32,62 +24,47 @@
 
             <Button x:Name="StartGameButton"
                     Grid.Column="0" Grid.Row="1"
-                    Content="StartGame"
-                    Style="{StaticResource StyleButton1}" ToolTip="Start new game"/>
-            <Button x:Name="ExitButton"
-                    Grid.Column="1" Grid.Row="1"
-                    Content="ExitGame"
-                    Style="{StaticResource StyleButton2}" ToolTip="ExitButton_Click" Click="ExitButton_Click"/>
-            <Button x:Name="NewImage"
-                    Grid.Column="1" Grid.Row="0"
-                    Content="NewImage"
-                    Style="{StaticResource StyleButton2}" ToolTip="New Image" Click="NewImage_Click"/>
+                    Content="{x:Static local:Lang.StartGame}"
+                    Style="{StaticResource StyleButton1}" ToolTip="Start new game" Grid.ColumnSpan="2" Margin="215,15,215,15" Click="StartGameButton_Click"/>
         </Grid>
 
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="0" Margin="0,-5,0,5">
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.1*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Menu Grid.Row="0">
-                <MenuItem Header="_Game">
-                    <MenuItem Header="New Game" InputGestureText="Ctrl + N"/>
-                    <MenuItem Header="Exit Game"/>
+                <MenuItem Header="{x:Static local:Lang.Game}">
+                    <MenuItem Header="{x:Static local:Lang.NewGame}" InputGestureText="Ctrl + N"/>
+                    <MenuItem Header="{x:Static local:Lang.ExitGame}" Click="ExitButton_Click"/>
                 </MenuItem>
-                <MenuItem Header="_Settings">
-                    <MenuItem Header="Language" InputGestureText="Ctrl + F">
-                        <MenuItem Header="Russian">
-                            <MenuItem.Icon>
-                                <Image Source="/Image/raznoe-flagi--gerby-gerb-fon-ukraina-1127236.jpg" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Ukraine">
-                            <MenuItem.Icon>
-                                <Image Source="/Image/raznoe-flagi--gerby-gerb-fon-ukraina-1127236.jpg" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Poland">
-                            <MenuItem.Icon>
-                                <Image Source="/Image/raznoe-flagi--gerby-gerb-fon-ukraina-1127236.jpg" />
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="English">
-                            <MenuItem.Icon>
-                                <Image Source="/Image/raznoe-flagi--gerby-gerb-fon-ukraina-1127236.jpg" />
-                            </MenuItem.Icon>
-                        </MenuItem>
+                <MenuItem Header="{x:Static local:Lang.Settings}">
+                    <MenuItem Header="{x:Static local:Lang.Language}">
+                        <RadioButton Content="{x:Static local:Lang.Russian}" IsChecked="True" x:Name="Russian"/>
+                        <RadioButton Content="{x:Static local:Lang.Ukraine}" x:Name="Ukraine"/>
+                        <RadioButton Content="{x:Static local:Lang.Poland}" x:Name="Poland"/>
+                        <RadioButton Content="{x:Static local:Lang.English}" x:Name="English"/>
                     </MenuItem>
-                    <MenuItem Header="Color">
-                        <MenuItem Header="Green" IsCheckable="True" />
-                        <MenuItem Header="Blue" IsCheckable="True"/>
-                        <MenuItem Header="Orange" IsCheckable="True"/>
+                    <MenuItem Header="{x:Static local:Lang.Color}">
+                        <RadioButton Content="{x:Static local:Lang.White}" Click="NewImage_Click" IsChecked="True" x:Name="White"/>
+                        <RadioButton Content="{x:Static local:Lang.Green}" Click="NewImage_Click" x:Name="Green"/>
+                        <RadioButton Content="{x:Static local:Lang.Blue}" Click="NewImage_Click" x:Name="Blue"/>
+                        <RadioButton Content="{x:Static local:Lang.Orange}" Click="NewImage_Click" x:Name="Orange"/>
+                        <RadioButton Content="{x:Static local:Lang.Flag}" Click="NewImage_Click" x:Name="Flag"/>
+                        <RadioButton Content="VV" Click="NewImage_Click" x:Name="VV"/>
                     </MenuItem>
+                    <MenuItem Header="{x:Static local:Lang.Level}">
+                        <RadioButton x:Name="Easy" Content="{x:Static local:Lang.Easy}" IsChecked="True" Click="Level"/>
+                        <RadioButton x:Name="Normal" Content="{x:Static local:Lang.Normal}" Click="Level"/>
+                        <RadioButton x:Name="Hard" Content="{x:Static local:Lang.Hard}" Click="Level"/>
+                    </MenuItem>
+
                 </MenuItem>
-                <MenuItem Header="_About Game" Click="MenuItem_Click"/>
+                <MenuItem Header="{x:Static local:Lang.About}" Click="MenuItem_Click"/>
             </Menu>
         </Grid>
 
-        
+
 
     </Grid>
 </Window>
