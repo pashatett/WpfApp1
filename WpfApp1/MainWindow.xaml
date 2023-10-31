@@ -7,64 +7,81 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        <Grid x:Name="Start" Visibility="Visible">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="StartGameButton"
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Button x:Name="StartGameButton"
                     Grid.Column="0" Grid.Row="1"
                     Content="{x:Static local:Lang.StartGame}"
                     Style="{StaticResource StyleButton1}" ToolTip="Start new game" Grid.ColumnSpan="2" Margin="215,15,215,15" Click="StartGameButton_Click"/>
+            </Grid>
+
+            <Grid Grid.Row="0" Margin="0,-5,0,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.1*"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Menu Grid.Row="0">
+                    <MenuItem Header="{x:Static local:Lang.Game}">
+                        <MenuItem Header="{x:Static local:Lang.NewGame}" InputGestureText="Ctrl + N" Click="NewGame"/>
+                        <MenuItem Header="{x:Static local:Lang.ExitGame}" Click="ExitButton_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="{x:Static local:Lang.Settings}">
+                        <MenuItem Header="{x:Static local:Lang.Language}">
+                            <RadioButton Content="{x:Static local:Lang.Russian}" IsChecked="True" x:Name="Russian"/>
+                            <RadioButton Content="{x:Static local:Lang.Ukraine}" x:Name="Ukraine"/>
+                            <RadioButton Content="{x:Static local:Lang.Poland}" x:Name="Poland"/>
+                            <RadioButton Content="{x:Static local:Lang.English}" x:Name="English"/>
+                        </MenuItem>
+                        <MenuItem Header="{x:Static local:Lang.Color}">
+                            <RadioButton Content="{x:Static local:Lang.White}" Click="NewImage_Click" IsChecked="True" x:Name="White"/>
+                            <RadioButton Content="{x:Static local:Lang.Green}" Click="NewImage_Click" x:Name="Green"/>
+                            <RadioButton Content="{x:Static local:Lang.Blue}" Click="NewImage_Click" x:Name="Blue"/>
+                            <RadioButton Content="{x:Static local:Lang.Orange}" Click="NewImage_Click" x:Name="Orange"/>
+                            <RadioButton Content="{x:Static local:Lang.Flag}" Click="NewImage_Click" x:Name="Flag"/>
+                            <RadioButton Content="VV" Click="NewImage_Click" x:Name="VV"/>
+                        </MenuItem>
+                        <MenuItem Header="{x:Static local:Lang.Level}">
+                            <RadioButton x:Name="Easy" Content="{x:Static local:Lang.Easy}" IsChecked="True" Click="Level"/>
+                            <RadioButton x:Name="Normal" Content="{x:Static local:Lang.Normal}" Click="Level"/>
+                            <RadioButton x:Name="Hard" Content="{x:Static local:Lang.Hard}" Click="Level"/>
+                        </MenuItem>
+                        <MenuItem Header="{x:Static local:Lang.Diapazone}">
+                            <RadioButton x:Name="Ten" Content="{x:Static local:Lang.Ten}" Click="Diapazone"/>
+                            <RadioButton x:Name="Hundred" Content="{x:Static local:Lang.Hundred}" IsChecked="True" Click="Diapazone"/>
+                            <RadioButton x:Name="Thousand" Content="{x:Static local:Lang.Thousand}" Click="Diapazone"/>
+                        </MenuItem>
+
+                    </MenuItem>
+                    <MenuItem Header="{x:Static local:Lang.About}" Click="MenuItem_Click"/>
+                </Menu>
+            </Grid>
         </Grid>
 
-        <Grid Grid.Row="0" Margin="0,-5,0,5">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.1*"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Menu Grid.Row="0">
-                <MenuItem Header="{x:Static local:Lang.Game}">
-                    <MenuItem Header="{x:Static local:Lang.NewGame}" InputGestureText="Ctrl + N"/>
-                    <MenuItem Header="{x:Static local:Lang.ExitGame}" Click="ExitButton_Click"/>
-                </MenuItem>
-                <MenuItem Header="{x:Static local:Lang.Settings}">
-                    <MenuItem Header="{x:Static local:Lang.Language}">
-                        <RadioButton Content="{x:Static local:Lang.Russian}" IsChecked="True" x:Name="Russian"/>
-                        <RadioButton Content="{x:Static local:Lang.Ukraine}" x:Name="Ukraine"/>
-                        <RadioButton Content="{x:Static local:Lang.Poland}" x:Name="Poland"/>
-                        <RadioButton Content="{x:Static local:Lang.English}" x:Name="English"/>
-                    </MenuItem>
-                    <MenuItem Header="{x:Static local:Lang.Color}">
-                        <RadioButton Content="{x:Static local:Lang.White}" Click="NewImage_Click" IsChecked="True" x:Name="White"/>
-                        <RadioButton Content="{x:Static local:Lang.Green}" Click="NewImage_Click" x:Name="Green"/>
-                        <RadioButton Content="{x:Static local:Lang.Blue}" Click="NewImage_Click" x:Name="Blue"/>
-                        <RadioButton Content="{x:Static local:Lang.Orange}" Click="NewImage_Click" x:Name="Orange"/>
-                        <RadioButton Content="{x:Static local:Lang.Flag}" Click="NewImage_Click" x:Name="Flag"/>
-                        <RadioButton Content="VV" Click="NewImage_Click" x:Name="VV"/>
-                    </MenuItem>
-                    <MenuItem Header="{x:Static local:Lang.Level}">
-                        <RadioButton x:Name="Easy" Content="{x:Static local:Lang.Easy}" IsChecked="True" Click="Level"/>
-                        <RadioButton x:Name="Normal" Content="{x:Static local:Lang.Normal}" Click="Level"/>
-                        <RadioButton x:Name="Hard" Content="{x:Static local:Lang.Hard}" Click="Level"/>
-                    </MenuItem>
-
-                </MenuItem>
-                <MenuItem Header="{x:Static local:Lang.About}" Click="MenuItem_Click"/>
-            </Menu>
+        <Grid x:Name="Gamee" Visibility="Hidden">
+            <TextBox x:Name="tbxGuess" HorizontalAlignment="Center" Height="23" Margin="0,142,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" KeyDown="tbxGuess_KeyDown"/>
+            <Button x:Name="btnCheck" Content="{x:Static local:Lang.Check}" HorizontalAlignment="Center" Margin="0,218,0,0" VerticalAlignment="Top" Width="120" Click="btnCheck_Click"/>
+            <TextBlock x:Name="tbResult" HorizontalAlignment="Center" Margin="0,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="760" Height="109" FontSize="36" TextAlignment="Center" FontWeight="Bold"/>
+            <TextBlock HorizontalAlignment="Left" x:Name="Time" TextWrapping="Wrap" VerticalAlignment="Top" Width="273" Height="69" FontFamily="Arial Black" FontSize="36" Margin="20,50,0,0"/>
+            <TextBlock HorizontalAlignment="Left" Margin="20,17,0,0" TextWrapping="Wrap" Text="Осталось:" VerticalAlignment="Top" Height="42" Width="209" FontFamily="Arial Black" FontSize="36"/>
+            <Button x:Name="btnCheck_Copy" Content="{x:Static local:Lang.StopGame}" HorizontalAlignment="Center" Margin="0,183,0,0" VerticalAlignment="Top" Width="120" Click="btnCheck_Copy_Click"/>
+            <Button x:Name="btnCheck_Copy1" Content="{x:Static local:Lang.Back}" HorizontalAlignment="Left" Margin="642,389,0,0" VerticalAlignment="Top" Width="120" Click="btnCheck_Copy1_Click"/>
         </Grid>
-
-
-
     </Grid>
+
+
+
 </Window>

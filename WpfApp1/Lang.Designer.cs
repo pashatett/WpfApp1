@@ -70,6 +70,15 @@ namespace WpfApp1 {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Назад.
+        /// </summary>
+        public static string Back {
+            get {
+                return ResourceManager.GetString("Back", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Синий.
         /// </summary>
         public static string Blue {
@@ -93,6 +102,24 @@ namespace WpfApp1 {
         public static string Color {
             get {
                 return ResourceManager.GetString("Color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Продолжить игру.
+        /// </summary>
+        public static string Continue {
+            get {
+                return ResourceManager.GetString("Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Диапазон.
+        /// </summary>
+        public static string Diapazone {
+            get {
+                return ResourceManager.GetString("Diapazone", resourceCulture);
             }
         }
         
@@ -156,6 +183,15 @@ namespace WpfApp1 {
         public static string Hard {
             get {
                 return ResourceManager.GetString("Hard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0-100.
+        /// </summary>
+        public static string Hundred {
+            get {
+                return ResourceManager.GetString("Hundred", resourceCulture);
             }
         }
         
@@ -237,6 +273,33 @@ namespace WpfApp1 {
         public static string StartGame {
             get {
                 return ResourceManager.GetString("StartGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Пауза.
+        /// </summary>
+        public static string StopGame {
+            get {
+                return ResourceManager.GetString("StopGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0-10.
+        /// </summary>
+        public static string Ten {
+            get {
+                return ResourceManager.GetString("Ten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на 0-1000.
+        /// </summary>
+        public static string Thousand {
+            get {
+                return ResourceManager.GetString("Thousand", resourceCulture);
             }
         }
         

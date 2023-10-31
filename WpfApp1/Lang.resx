@@ -120,6 +120,9 @@
   <data name="About" xml:space="preserve">
     <value>О приложении</value>
   </data>
+  <data name="Back" xml:space="preserve">
+    <value>Назад</value>
+  </data>
   <data name="Blue" xml:space="preserve">
     <value>Синий</value>
   </data>
@@ -128,6 +131,12 @@
   </data>
   <data name="Color" xml:space="preserve">
     <value>Цвет</value>
+  </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Продолжить игру</value>
+  </data>
+  <data name="Diapazone" xml:space="preserve">
+    <value>Диапазон</value>
   </data>
   <data name="Easy" xml:space="preserve">
     <value>Легкий</value>
@@ -149,6 +158,9 @@
   </data>
   <data name="Hard" xml:space="preserve">
     <value>Сложный</value>
+  </data>
+  <data name="Hundred" xml:space="preserve">
+    <value>0-100</value>
   </data>
   <data name="Language" xml:space="preserve">
     <value>Язык</value>
@@ -176,6 +188,15 @@
   </data>
   <data name="StartGame" xml:space="preserve">
     <value>Начать игру</value>
+  </data>
+  <data name="StopGame" xml:space="preserve">
+    <value>Пауза</value>
+  </data>
+  <data name="Ten" xml:space="preserve">
+    <value>0-10</value>
+  </data>
+  <data name="Thousand" xml:space="preserve">
+    <value>0-1000</value>
   </data>
   <data name="Ukraine" xml:space="preserve">
     <value>Украинский</value>
