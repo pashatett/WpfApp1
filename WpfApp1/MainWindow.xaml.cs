@@ -133,18 +133,26 @@ namespace WpfApp1
             Gamee.Visibility = Visibility.Visible;
 
             tbxGuess.Focus();
-            StartNewGame(diap);
 
-            _time = TimeSpan.FromSeconds(level);
-
-            _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+            if (StartGameButton.Content == "Продолжить")
             {
-                Time.Text = _time.ToString("c");
-                if (_time == TimeSpan.Zero) Close();
-                _time = _time.Add(TimeSpan.FromSeconds(-1));
-            }, Application.Current.Dispatcher);
+                _timer.Start();
+            }
+            else
+            {
+                StartNewGame(diap);
 
-            _timer.Start();
+                _time = TimeSpan.FromSeconds(level);
+
+                _timer = new DispatcherTimer(new TimeSpan(0, 0, 1), DispatcherPriority.Normal, delegate
+                {
+                    Time.Text = _time.ToString("c");
+                    if (_time == TimeSpan.Zero) Close();
+                    _time = _time.Add(TimeSpan.FromSeconds(-1));
+                }, Application.Current.Dispatcher);
+
+                _timer.Start();
+            }
         }
 
         private void StartNewGame(int diap)
@@ -218,11 +226,12 @@ namespace WpfApp1
             if (btnCheck.IsEnabled == true)//не угадал еще
             {
                 _timer.Stop();
-                StartGameButton.Content = "Продолжить";
+                StartGameButton.Content = "Продолжить";//спросить как поменять
+
             }
             else//угадал уже
             {
-
+                NewGame(sender, e);
             }
         }
 
